@@ -14,7 +14,12 @@ install:
 	@echo "✓ Installation complete"
 
 clean:
-	rm -rf .venv && rm -rf __pycache__ && find . -type d -name "__pycache__" -exec rm -rf {} + && find . -type f -name "*.pyc" -delete
+	rm -rf .venv && \
+	rm -rf __pycache__ && \
+	rm -rf .pytest_cache && \
+	rm -rf .ruff_cache && \
+	find . -type d -name "__pycache__" -exec rm -rf {} + && \
+	find . -type f -name "*.pyc" -delete
 	@echo "✓ cleaned project"
 
 setup: clean install

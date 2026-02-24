@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from typing import Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class TodoCreate(BaseModel):
@@ -11,6 +11,8 @@ class TodoCreate(BaseModel):
 
 class Todo(BaseModel):
     """Class representing a todo item with an ID and creation timestamp"""
+    model_config = ConfigDict(from_attributes=True)
+    
     id: int
     title: str
     description: Optional[str] = None
