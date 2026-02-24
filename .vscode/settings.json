@@ -1,0 +1,21 @@
+{
+  // Python interpreter (aponta pro venv do projeto)
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+
+  // Pylance: auto-import ao digitar e ao aceitar sugestões
+  "python.languageServer": "Pylance",
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.indexing": true,
+
+  // Ruff como formatter (substitui black + isort)
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
+    }
+  },
+  "pylint.enabled": false
+}

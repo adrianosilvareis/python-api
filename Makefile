@@ -1,7 +1,7 @@
-.PHONY: serve test typecheck
+.PHONY: serve test typecheck lint lint-fix lint-imports
 
 serve:
-	uv run uvicorn src.python_api.main:app --reload
+	uv run uvicorn python_api.main:app --reload
 
 test:
 	uv run pytest
@@ -19,3 +19,17 @@ clean:
 
 setup: clean install
 	@echo "✓ setup complete"
+
+lint:
+	@echo "Verificando problemas no código..."
+	uv run ruff check src/
+
+lint-fix:
+	@echo "Corrigindo problemas automaticamente..."
+	uv run ruff check --fix src/
+	@echo "✓ Correções aplicadas"
+
+lint-imports:
+	@echo "Organizando imports..."
+	uv run ruff check --select I --fix src/
+	@echo "✓ Imports organizados"

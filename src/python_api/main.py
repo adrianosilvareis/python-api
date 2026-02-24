@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 
+from python_api.routers import todos
+
 app = FastAPI()
 
-@app.get("/")
+app.include_router(todos.router)
+
+@app.get("/health")
 def root():
-    return {"message": "Hello from python-api!"}
+    return {"message": "health checked"}
